@@ -1,4 +1,3 @@
-package com.company;
 import java.util.Scanner;
 
 class Main {
@@ -114,27 +113,25 @@ class Main {
                 float diagonal1 = rhm.nextFloat();
                 System.out.print("Input first diagonal:");
                 float diagonal2 = rhm.nextFloat();
-                System.out.print("Input first first side:");
+                System.out.print("Input the length of the Rhombus:");
                 float side1 = rhm.nextFloat();
-                System.out.print("Input first second side:");
-                float side2 = rhm.nextFloat();
-                System.out.print("Input first third side:");
-                float side3 = rhm.nextFloat();
-                System.out.print("Input first fourth side:");
-                float side4 = rhm.nextFloat();
 
-                Rhombus rhombus = new Rhombus(diagonal1, diagonal2);
+
+                Rhombus rhombus = new Rhombus(diagonal1, diagonal2, side1);
 
                 Quadilateral rhom = rhombus;
 
                 System.out.printf("The area of the Rhombus with diagonals %.2f and  %.2f is %.2f\n", diagonal1, diagonal2, rhombus.Arearhm());
 
                 System.out.println("");
-                System.out.printf("The perimeter of the Rhombus with first side: %.2f, second side: %.2f, third side: %.2f, fourth side: %.2f is %.2f\n", side1, side2, side3, side4, rhombus.Rhomper());
+                System.out.printf("The perimeter of the Rhombus with length: %.2f is %.2f\n", side1,rhombus.Rhomper());
                 System.out.println("");
                 System.out.println("");
                 System.out.println("");
                 break;
+
+            default:
+                System.out.println("Invalid input!!");
 
         }
 
@@ -147,12 +144,9 @@ class Main {
 class Rhombus extends Quadilateral {
     private float diagonal1;
     private float diagonal2;
-    private float side1;
-    private float side2;
-    private float side3;
-    private float side4;
+    private float side;
 
-    public Rhombus (float d1, float d2){
+    public Rhombus (float d1, float d2, float side1){
         if (d1 <= 0){
             System.out.println("You cannot have a negative or zero base. Therefore length returns to default which is 1\n");
             diagonal1 = 1;
@@ -165,6 +159,12 @@ class Rhombus extends Quadilateral {
         }
         else
             diagonal2 = d2;
+        if (side1 <= 0){
+            System.out.println("You cannot have a negative or zero height. Therefore breadth returns to default which is 1");
+            side = 1;
+        }
+        else
+            side = side1;
     }
 
     public float Arearhm(){
@@ -173,7 +173,8 @@ class Rhombus extends Quadilateral {
 
     public float Rhomper(){
 
-        return (side1 + side2 + side3 + side4);
+
+        return (4 * side);
 
     }
 
